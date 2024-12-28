@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us - Perfume Paradise</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        /* Styling for About Us Section */
+        .about-section {
+            padding: 40px 20px;
+            background: linear-gradient(to right, #f8f8f8, #ffffff);
+        }
+
+        .about-content {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .about-content h2 {
+            font-size: 2.5em;
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        .about-content p {
+            font-size: 1.2em;
+            line-height: 1.8;
+            color: #666;
+            margin-bottom: 20px;
+        }
+
+        .about-image {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 30px;
+        }
+
+        .about-image img {
+            width: 100%;
+            max-width: 400px;
+            border-radius: 15px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .mission-values {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            margin-top: 40px;
+        }
+
+        .mission-values .card {
+            background: #ffffff;
+            padding: 20px;
+            margin: 10px;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            width: 280px;
+            text-align: center;
+        }
+
+        .mission-values .card h3 {
+            font-size: 1.5em;
+            color: #333;
+            margin-bottom: 10px;
+        }
+
+        .mission-values .card p {
+            font-size: 1em;
+            color: #666;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <h1>Perfume Paradise</h1>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="shop.html">Shop</a></li>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="contact.html">Contact Us</a></li>
+                    <li><a href="cart.html"></a></li>
+                    <li>      <div id="cart-logo" style="position: relative; display: inline-block;">
+                        <div id="cart-logo" style="position: relative; display: inline-block;">
+                            <a href="cart.html" style="text-decoration: none;">
+                                <i class="fas fa-shopping-cart" style="font-size: 30px; color: white;"></i>
+                                <span id="cart-count" style="
+                                    position: absolute;
+                                    top: -10px;
+                                    right: -10px;
+                                    background: #e74c3c;
+                                    color: white;
+                                    font-size: 12px;
+                                    border-radius: 50%;
+                                    padding: 2px 6px;
+                                    display: none;">0</span>
+                            </a>
+                        </div>
+                        
+                        </li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section class="about-section">
+            <div class="about-content">
+                <h2>About Perfume Paradise</h2>
+                <div class="about-image">
+                    <img src="rr.jpg" alt="Perfume Paradise Store">
+                </div>
+                <p>
+                    Perfume Paradise is your destination for exquisite and luxurious fragrances. We curate a selection of the finest perfumes from around the world to provide you with a unique olfactory experience. Our passion for scents and dedication to quality drive us to offer only the most exceptional products.
+                </p>
+                <p>
+                    At Perfume Paradise, we believe that perfume is not just a fragrance but an expression of individuality. Our mission is to connect you with scents that resonate with your personality and leave a lasting impression.
+                </p>
+            </div>
+
+            <div class="mission-values">
+                <div class="card">
+                    <h3>Our Mission</h3>
+                    <p>To inspire confidence and individuality through the power of premium fragrances.</p>
+                </div>
+                <div class="card">
+                    <h3>Our Values</h3>
+                    <p>We prioritize quality, authenticity, and customer satisfaction in every interaction.</p>
+                </div>
+                <div class="card">
+                    <h3>Our Vision</h3>
+                    <p>To be the leading fragrance destination, connecting people with scents that tell their unique stories.</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-social">
+            <h3>Follow Us</h3>
+            <div class="social-icons">
+                <a href="https://www.facebook.com" target="_blank" class="social-link">
+                    <i class="fab fa-facebook"></i> Facebook
+                </a>
+                <a href="https://www.twitter.com" target="_blank" class="social-link">
+                    <i class="fab fa-twitter"></i> Twitter
+                </a>
+                <a href="https://www.instagram.com" target="_blank" class="social-link">
+                    <i class="fab fa-instagram"></i> Instagram
+                </a>
+                <a href="https://www.linkedin.com" target="_blank" class="social-link">
+                    <i class="fab fa-linkedin"></i> LinkedIn
+                </a>
+            </div>
+        </div>
+        <p>&copy; 2024 Perfume Paradise. All rights reserved.</p>
+    </footer>
+
+    <script>
+          const cart = JSON.parse(localStorage.getItem("cart")) || [];
+    const cartCountElement = document.getElementById("cart-count");
+
+    // Update cart count icon
+    if (cart.length > 0) {
+        cartCountElement.textContent = cart.length;
+        cartCountElement.style.display = "block";
+    } else {
+        cartCountElement.style.display = "none";
+    }
+
+    </script>
+</body>
+</html>

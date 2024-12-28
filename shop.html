@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shop - Perfume Paradise</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <h1>Perfume Paradise</h1>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="shop.html">Shop</a></li>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="contact.html">Contact Us</a></li>
+                    <li>
+                        <div id="cart-logo" style="position: relative; display: inline-block;">
+                            <a href="cart.html" style="text-decoration: none;">
+                                <i class="fas fa-shopping-cart" style="font-size: 30px; color: white;"></i>
+                                <span id="cart-count" style="
+                                    position: absolute;
+                                    top: -10px;
+                                    right: -10px;
+                                    background: #e74c3c;
+                                    color: white;
+                                    font-size: 12px;
+                                    border-radius: 50%;
+                                    padding: 2px 6px;
+                                    display: none;">0</span>
+                            </a>
+                        </div>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section class="search-section">
+        <input type="text" id="search-bar" placeholder="Search for perfumes..." oninput="searchPerfumes()">
+    </section>
+
+    <main>
+        <section class="products-section">
+            <!-- Product 1 -->
+            <div class="product">
+                <img src="images/new-product/N1-2.png" alt="Product 1">
+                <h3>Aqva Pour Homme Marine by Bvlgari</h3>
+                <p>A fresh and invigorating aquatic fragrance with citrus and floral notes, perfect for a refreshing experience.</p>
+                <span>$49.99</span>
+                <button class="button" onclick="addToCart('Aqva Pour Homme Marine by Bvlgari', 49.99, 'images/new-product/N1-2.png')">Add to Cart</button>
+            </div>
+
+            <!-- Product 2 -->
+            <div class="product">
+                <img src="images/new-product/N3.png" alt="Product 2">
+                <h3>Emporio Armani Stronger With You Intensely by Giorgio Armani</h3>
+                <p>A bold, captivating fragrance with spicy, woody, and amber notes, perfect for making a lasting impression.</p>
+                <span>$29.97</span>
+                <button class="button" onclick="addToCart('Emporio Armani Stronger With You Intensely by Giorgio Armani', 29.97, 'images/new-product/N3.png')">Add to Cart</button>
+            </div>
+
+            <!-- Product 3 -->
+            <div class="product">
+                <img src="images/new-product/N6-1.png" alt="Product 3">
+                <h3>The One by Dolce & Gabbana</h3>
+                <p>An elegant, warm fragrance with a blend of oriental and floral notes, perfect for evening wear.</p>
+                <span>$69.99</span>
+                <button class="button" onclick="addToCart('The One by Dolce & Gabbana', 69.99, 'images/new-product/N6-1.png')">Add to Cart</button>
+            </div>
+
+            <!-- Product 4 -->
+            <div class="product">
+                <img src="images/new-product/N5-1.png" alt="Product 4">
+                <h3>Signoria</h3>
+                <p>A refined and elegant fragrance with a perfect blend of floral, citrus, and woody notes.</p>
+                <span>$118.90</span>
+                <button class="button" onclick="addToCart('Signoria', 118.90, 'images/new-product/N5-1.png')">Add to Cart</button>
+            </div>
+
+            <!-- Product 5 -->
+            <div class="product">
+                <img src="images/Deals/D2-2.png" alt="Product 5">
+                <h3>Versace Pour Femme Dylan Blue</h3>
+                <p>A luxurious fragrance with fresh floral notes, offering an elegant scent.</p>
+                <span>$200.90</span>
+                <button class="button" onclick="addToCart('Versace Pour Femme Dylan Blue', 200.90, 'images/Deals/D2-2.png')">Add to Cart</button>
+            </div>
+
+            <!-- Product 6 -->
+            <div class="product">
+                <img src="images/new-product/N4-2.png" alt="Product 6">
+                <h3>Floris London</h3>
+                <p>A sophisticated fragrance with floral and citrus notes, offering a timeless and refreshing scent.</p>
+                <span>$89.90</span>
+                <button class="button" onclick="addToCart('Floris London', 89.90, 'images/new-product/N4-2.png')">Add to Cart</button>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-social">
+            <h3>Follow Us</h3>
+            <div class="social-icons">
+                <a href="https://www.facebook.com" target="_blank" class="social-link">
+                    <i class="fab fa-facebook"></i> Facebook
+                </a>
+                <a href="https://www.twitter.com" target="_blank" class="social-link">
+                    <i class="fab fa-twitter"></i> Twitter
+                </a>
+                <a href="https://www.instagram.com" target="_blank" class="social-link">
+                    <i class="fab fa-instagram"></i> Instagram
+                </a>
+                <a href="https://www.linkedin.com" target="_blank" class="social-link">
+                    <i class="fab fa-linkedin"></i> LinkedIn
+                </a>
+            </div>
+        </div>
+        <p>&copy; 2024 Perfume Paradise. All rights reserved.</p>
+    </footer>
+    
+
+    <script>
+        // Retrieve cart from localStorage or initialize it as an empty array
+        let cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+        // Function to add an item to the cart
+        function addToCart(name, price, image) {
+            cart.push({ name, price, image });
+            localStorage.setItem("cart", JSON.stringify(cart)); // Save to localStorage
+            updateCartCount();
+
+            // Show feedback message
+            const feedback = document.createElement("div");
+            feedback.textContent = "Item added to cart!";
+            feedback.style.position = "fixed";
+            feedback.style.bottom = "20px";
+            feedback.style.right = "20px";
+            feedback.style.backgroundColor = "#27ae60";
+            feedback.style.color = "white";
+            feedback.style.padding = "10px";
+            feedback.style.borderRadius = "5px";
+            feedback.style.boxShadow = "0 4px 8px rgba(0, 0, 0, 0.2)";
+            document.body.appendChild(feedback);
+
+            setTimeout(() => feedback.remove(), 2000); // Remove feedback after 2 seconds
+        }
+
+        // Function to update the cart count in the header
+        function updateCartCount() {
+            const cartCountElement = document.getElementById("cart-count");
+            cartCountElement.textContent = cart.length;
+            cartCountElement.style.display = cart.length > 0 ? "block" : "none";
+        }
+
+        // Function for search functionality
+        function searchPerfumes() {
+            const query = document.getElementById("search-bar").value.toLowerCase();
+            const products = document.querySelectorAll(".product");
+
+            products.forEach(product => {
+                const productName = product.querySelector("h3").textContent.toLowerCase();
+                if (productName.includes(query)) {
+                    product.style.display = "block";
+                } else {
+                    product.style.display = "none";
+                }
+            });
+        }
+
+        // Initialize the cart count on page load
+        document.addEventListener("DOMContentLoaded", updateCartCount);
+    </script>
+</body>
+</html>
